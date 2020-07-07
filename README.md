@@ -1,6 +1,6 @@
 # docker-compose ghost
 
-Development stack with ghost
+Development stack with [ghost](https://ghost.org/)
 
 ## Requirements
 
@@ -8,7 +8,7 @@ Development stack with ghost
 
 ## Usages
 
-Ghost versions is driven by the [.env](.env) file with another variables.
+Ghost version is driven by the [.env](.env) file with another variables.
 
 ```sh
 docker-compose up -d
