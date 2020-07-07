@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  ghost:
+    image: ghost:${GHOST_VERSION}-alpine
+    environment:
+      url: "${GHOST_PROTOCOL}://${GHOST_HOST}:${GHOST_PORT}"
+    volumes:
+      - ./content:/var/lib/ghost/content
+    ports:
+      - "${GHOST_PORT}:2368"
