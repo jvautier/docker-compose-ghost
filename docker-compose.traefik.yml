@@ -1,0 +1,22 @@
+version: "3.7"
+networks:
+  traefik:
+    external: true
+services:
+  ghost:
+    image: ghost:${GHOST_VERSION}-alpine
+    environment:
+      url: "${GHOST_PROTOCOL}://${GHOST_HOST}:${GHOST_PORT}"
+    volumes:
+      - ./content:/var/lib/ghost/content
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ghost-http.rule=Host(`${GHOST_HOST}`)"
+      - "traefik.http.routers.ghost-http.entrypoints=http"
+      - "traefik.http.routers.ghost-http.middlewares=redirect@file"
+      - "traefik.http.routers.ghost-https.rule=Host(`${GHOST_HOST}`)"
+      - "traefik.http.routers.ghost-https.entrypoints=https"
+      - "traefik.http.routers.ghost-https.tls=true"
+      - "traefik.http.services.ghost.loadbalancer.server.port=2368"

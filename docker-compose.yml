@@ -7,4 +7,4 @@ services:
     volumes:
       - ./content:/var/lib/ghost/content
     ports:
-      - "${GHOST_PORT}:2368"
+      - "8080:2368"
