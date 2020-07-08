@@ -1,6 +1,6 @@
 # docker-compose ghost
 
-Development stack with [ghost](https://ghost.org/)
+Docker-compose stack with [ghost](https://ghost.org/)
 
 ## Requirements
 
@@ -21,4 +21,3 @@ docker-compose logs -f
 ```sh
 docker-compose logs -f ghost
 ```
-
