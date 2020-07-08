@@ -1,0 +1,27 @@
+# This section contains your application metadata.
+# Version of the application
+version: 1.0.0
+# Name of the application
+name: ghost
+# A short description of the application
+description: ghost blog stack
+# List of application maintainers with name and email for each
+maintainers:
+  - name: jvautier
+    email: 
+
+---
+# This section contains the Compose file that describes your application services.
+version: "3.7"
+services:
+  app:
+    image: ghost:3.22.1-alpine
+    environment:
+      url: "${protocol}://${host}:${port}"
+    ports:
+      - "${port}:2368"
+---
+# This section contains the default values for your application parameters.
+host: ghost.docker.localhost
+port: 80
+protocol: "http"
