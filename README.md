@@ -23,9 +23,3 @@ docker-compose logs -f
 ```sh
 docker-compose logs -f ghost
 ```
-
-export COMPOSE_FILE=docker-compose.traefik.yml
-protocol=http host=localhost port=80 docker-compose up 
-docker app install
-docker app uninstall
-docker app status
