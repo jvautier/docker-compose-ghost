@@ -3,8 +3,8 @@ services:
   ghost:
     image: ghost:${GHOST_VERSION}-alpine
     environment:
-      url: "${GHOST_PROTOCOL}://${GHOST_HOST}:${GHOST_PORT}"
+      url: "${protocol}://${host}:${port}"
     volumes:
       - ./content:/var/lib/ghost/content
     ports:
-      - "8080:2368"
+      - "${port}:2368"

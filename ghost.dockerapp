@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 1.0.0
+version: 1.0.1
 # Name of the application
 name: ghost
 # A short description of the application
@@ -16,12 +16,25 @@ version: "3.7"
 services:
   app:
     image: ghost:3.22.1-alpine
+    expose:
+      - 2368
     environment:
       url: "${protocol}://${host}:${port}"
-    ports:
-      - "${port}:2368"
+    volumes:
+      - /data/ghost/content:/var/lib/ghost/content
+    deploy:
+      labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ghost-http.rule=Host(`${host}`)"
+      - "traefik.http.routers.ghost-http.entrypoints=http"
+      - "traefik.http.routers.ghost-http.middlewares=redirect@file"
+      - "traefik.http.routers.ghost-https.rule=Host(`${host}`)"
+      - "traefik.http.routers.ghost-https.entrypoints=https"
+      - "traefik.http.routers.ghost-https.tls=true"
+      - "traefik.http.routers.ghost-https.service=ghost-service"
+      - "traefik.http.services.ghost-service.loadbalancer.server.port=2368"
 ---
 # This section contains the default values for your application parameters.
 host: ghost.docker.localhost
-port: 80
-protocol: "http"
+port: "443"
+protocol: "https"
