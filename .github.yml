@@ -1,0 +1,9 @@
+---
+fullname: jvautier/docker-compose-ghost
+description: Docker-compose development stack with ghost.
+tags:
+  - development
+  - docker
+  - docker-compose
+  - ghost
+github: {}
