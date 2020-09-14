@@ -1,4 +1,5 @@
 ---
+# See https://github.com/jvautier/project-cli
 fullname: jvautier/docker-compose-ghost
 description: Docker-compose development stack with ghost.
 tags:
